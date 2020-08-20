@@ -1,5 +1,6 @@
 package com.springcourse.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +25,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity(name = "user")
-public class User {
+public class User implements Serializable {
+
+    private static final long serialVersionUID = -7598129376697593616L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
