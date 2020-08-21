@@ -34,7 +34,7 @@ public class UserRepositoryTests {
 	@Test
 	public void updateTest() {
 		
-		User user = new User(1L, "Kevin Wingi", "kevin.wingi@gmail.com", "123", Role.ADMINISTRATOR, null, null);
+		User user = new User(1L, "Kevin Wingis", "kevin.wingi@gmail.com", "123", Role.ADMINISTRATOR, null, null);
 		User updatedUser = userRepository.save(user);
 		assertThat(updatedUser.getName()).isEqualTo("Kevin Wingi");
 		
