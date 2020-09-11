@@ -40,11 +40,10 @@ public class RequestResource {
 		return ResponseEntity.ok(request);
 	}	
 	
-	@GetMapping("/{id}")
+	@GetMapping
 	public ResponseEntity<List<Request>> listAll (){
 		List<Request> requests = requestService.listAll();
 		return ResponseEntity.ok(requests);
 	}
 
-	//list all by owner id
 }
