@@ -46,7 +46,7 @@ public class UserResource {
 		return ResponseEntity.ok(user);
 	}
 	
-	@GetMapping("/{id}")
+	@GetMapping
 	public ResponseEntity<List<User>> listAll (){
 		List<User> users = userService.listAll();
 		return ResponseEntity.ok(users);
