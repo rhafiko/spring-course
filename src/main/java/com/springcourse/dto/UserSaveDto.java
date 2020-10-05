@@ -11,11 +11,16 @@ import javax.validation.constraints.Size;
 import com.springcourse.domain.Request;
 import com.springcourse.domain.RequestStage;
 import com.springcourse.domain.User;
+import com.springcourse.domain.enums.RequestState;
 import com.springcourse.domain.enums.Role;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter @Setter
 public class UserSaveDto {
 	

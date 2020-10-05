@@ -11,10 +11,15 @@ import javax.validation.constraints.Size;
 import com.springcourse.domain.Request;
 import com.springcourse.domain.RequestStage;
 import com.springcourse.domain.User;
+import com.springcourse.domain.enums.RequestState;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter @Setter
 public class UserUpdateDto {
 	
@@ -24,6 +29,7 @@ public class UserUpdateDto {
 	@Email(message = "invalid email address")
 	private String email;
 	
+	@NotBlank(message = "password required")
 	@Size(min = 7, max = 99, message = "password must be between 7 and 99 lenght")
 	private String password;
 	
