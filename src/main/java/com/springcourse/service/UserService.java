@@ -64,6 +64,9 @@ public class UserService {
 		password = HashUtil.getSecureHash(password);
 		
 		Optional<User> result = userRepository.login(email, password);
+		if (result.isEmpty()) {
+			throw new NotFoundException("There are not user with the informed credentials");
+		}
 		return result.get();
 	}
 	
