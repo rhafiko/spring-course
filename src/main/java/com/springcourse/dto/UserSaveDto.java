@@ -30,10 +30,11 @@ public class UserSaveDto {
 	@Email(message = "invalid email address")
 	private String email;
 	
+	@NotBlank(message = "password required")
 	@Size(min = 7, max = 99, message = "password must be between 7 and 99 lenght")
 	private String password;
 	
-	@NotNull
+	@NotNull(message = "role required")
 	private Role role;
 	
 	private List<Request> requests = new ArrayList<Request>();
