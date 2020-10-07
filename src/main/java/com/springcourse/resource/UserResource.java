@@ -50,8 +50,9 @@ public class UserResource {
 	
 	@Secured({"ROLE_ADMINISTRATOR"})
 	@PostMapping
-	public ResponseEntity<User> save (@RequestBody @Valid UserSaveDto user){
-		User createdUser = userService.save(user.transformToUser());
+	public ResponseEntity<User> save (@RequestBody @Valid UserSaveDto userDto){
+		User user = userDto.transformToUser();
+		User createdUser = userService.save(user);
 		return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
 	}
 	
@@ -70,6 +71,7 @@ public class UserResource {
 		return ResponseEntity.ok(user);
 	}
 	
+
 	@GetMapping
 	public ResponseEntity<PageModel<User>> listAll (@RequestParam(value = "page", defaultValue = "0") int page,
 			@RequestParam(value = "size", defaultValue = "10") int size){

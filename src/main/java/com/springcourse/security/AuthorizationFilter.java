@@ -35,6 +35,7 @@ public class AuthorizationFilter extends OncePerRequestFilter {
 			throws ServletException, IOException {
 		
 		String jwt = request.getHeader(HttpHeaders.AUTHORIZATION);
+		System.out.println(jwt);
 		
 		if (jwt == null || !jwt.startsWith(SecurityConstants.JWT_PROVIDER)) {
 			ApiError apiError = new ApiError(HttpStatus.UNAUTHORIZED.value(), SecurityConstants.JWT_INVALID_MESSAGE, new Date());
@@ -56,14 +57,19 @@ public class AuthorizationFilter extends OncePerRequestFilter {
 			String email = claims.getSubject();
 			List<String> roles = (List<String>) claims.get(SecurityConstants.JWT_ROLE_KEY);
 			
+			System.out.println("Email: "+email);
+			System.out.println("roles: "+ roles.toString());
+			
 			List<GrantedAuthority> grantedAuthorities = new ArrayList<GrantedAuthority>();
 			roles.forEach(role -> {
 				grantedAuthorities.add(new SimpleGrantedAuthority(role));
 			});
 			
+			System.out.println("grantedAuthorities: "+ grantedAuthorities.toString());
 			Authentication authentication = new UsernamePasswordAuthenticationToken(email, null, grantedAuthorities);
 			SecurityContextHolder.getContext().setAuthentication(authentication);
 		} catch (Exception e) {
+			System.out.println("Catch Não Autorizado");
 			ApiError apiError = new ApiError(HttpStatus.UNAUTHORIZED.value(), e.getMessage(), new Date());
 			PrintWriter writer = response.getWriter();
 			
